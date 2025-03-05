@@ -28,27 +28,70 @@ pub fn render(ui: &mut egui::Ui, app: &mut EucarinogammarusApp) {
     });
     
     egui::ScrollArea::vertical().show(ui, |ui| {
-        egui::Grid::new("records_grid")
-            .striped(true)
-            .spacing([5.0, 5.0])
-            .show(ui, |ui| {
-                // Заголовки столбцов
-                ui.label("ID");
-                ui.label("Код");
-                ui.label("Род");
-                ui.label("Вид");
-                ui.label("Размеры мм");
-                ui.end_row();
-                
-                // Отображение записей
-                for record in app.filtered_records() {
-                    ui.label(record.id.to_string());
-                    ui.label(&record.code);
-                    ui.label(&record.genus);
-                    ui.label(&record.species);
-                    ui.label(&record.size_mm);
+        egui::ScrollArea::horizontal().show(ui, |ui| {
+            egui::Grid::new("records_grid")
+                .striped(true)
+                .spacing([5.0, 5.0])
+                .show(ui, |ui| {
+                    // Заголовки столбцов
+                    ui.label("ID");
+                    ui.label("Код");
+                    ui.label("Род");
+                    ui.label("Вид");
+                    ui.label("Размеры мм");
+                    ui.label("Тело");
+                    ui.label("Окраска");
+                    ui.label("Распространение");
+                    ui.label("Глубина м");
+                    ui.label("Вооруж. тела");
+                    ui.label("Средний ряд I-VII");
+                    ui.label("Средн. ряд VIII-X");
+                    ui.label("Сред. ряд урозом");
+                    ui.label("Боковой ряд");
+                    ui.label("Краевой ряд");
+                    ui.label("Особен. воор.");
+                    ui.label("Эпимир. пласт.");
+                    ui.label("Верх. антенны");
+                    ui.label("Прид. жгутик");
+                    ui.label("Нижн. антенны");
+                    ui.label("Базип. III-V");
+                    ui.label("Уроподы III");
+                    ui.label("Головн. сегм.");
+                    ui.label("Глаза");
+                    ui.label("Тельсон");
                     ui.end_row();
-                }
-            });
+                
+    
+                    // Отображение записей
+                    for record in app.filtered_records() {
+                        ui.label(record.id.to_string());
+                        ui.label(&record.code);
+                        ui.label(&record.genus);
+                        ui.label(&record.species);
+                        ui.label(&record.size_mm);
+                        ui.label(&record.body);
+                        ui.label(&record.coloration);
+                        ui.label(&record.distribution);
+                        ui.label(&record.depth_m);
+                        ui.label(&record.body_armament);
+                        ui.label(&record.median_row_i_vii);
+                        ui.label(&record.median_row_viii_x);
+                        ui.label(&record.median_row_urozom);
+                        ui.label(&record.lateral_row);
+                        ui.label(&record.marginal_row);
+                        ui.label(&record.special_armament);
+                        ui.label(&record.epimeral_plate);
+                        ui.label(&record.upper_antennae);
+                        ui.label(&record.accessory_flagellum);
+                        ui.label(&record.lower_antennae);
+                        ui.label(&record.basipodite_iii_v);
+                        ui.label(&record.uropods_iii);
+                        ui.label(&record.head_segment);
+                        ui.label(&record.eyes);
+                        ui.label(&record.telson);
+                        ui.end_row();
+                    }
+                });
+        });
     });
 }
