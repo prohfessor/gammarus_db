@@ -14,12 +14,19 @@ pub enum Tab {
     Delete,
 }
 
+#[derive(Debug, PartialEq, Clone, Copy)]
+pub enum SortDirection {
+    Ascending,
+    Descending,
+}
+
 pub struct EucarinogammarusApp {
     pub conn: Arc<Mutex<Connection>>,
     pub records: Vec<Eucarinogammarus>,
     pub selected_tab: Tab,
     pub search_term: String,
     pub sort_column: String,
+    pub sort_direction: SortDirection,
     pub new_record: NewRecord,
     pub edit_id: String,
     pub edit_column: String,
@@ -107,6 +114,7 @@ impl EucarinogammarusApp {
             selected_tab: Tab::View,
             search_term: String::new(),
             sort_column: "id".to_string(),
+            sort_direction: SortDirection::Ascending,
             new_record: NewRecord::default(),
             edit_id: String::new(),
             edit_column: String::new(),

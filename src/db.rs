@@ -1,7 +1,7 @@
 use rusqlite::{params, Connection, Result};
 use std::error::Error;
+use crate::app::SortDirection;
 use std::fs::File;
-use std::io::{self, BufRead, Write};
 use csv::Reader;
 
 // Структура для хранения данных
@@ -137,15 +137,22 @@ pub fn load_records(conn: &Connection) -> Result<Vec<Eucarinogammarus>, Box<dyn 
 }
 
 // Функция для загрузки записей из базы данных с сортировкой
-pub fn load_records_sorted(conn: &Connection, sort_column: &str) -> Result<Vec<Eucarinogammarus>, Box<dyn Error>> {
+pub fn load_records_sorted(conn: &Connection, sort_column: &str, direction: SortDirection) -> Result<Vec<Eucarinogammarus>, Box<dyn Error>> {
+    let direction_str = match direction {
+        SortDirection::Ascending => "ASC",
+        SortDirection::Descending => "DESC",
+    };
+    
     let query = format!(
         "SELECT id, Код, Род, Вид, Размеры_мм, Тело, Окраска, Распространение, 
                 Глубина_м, Вооруж_тела, Средний_ряд_I_VII, Средн_ряд_VIII_X, Сред_ряд_урозом, 
                 Боковой_ряд, Краевой_ряд, Особен_воор, Эпимир_пласт, Верх_антенны, 
                 Прид_жгутик, Нижн_антенны, Базип_III_V, Уроподы_III, Головн_сегм, 
                 Глаза, Тельсон 
-         FROM Eucarinogammarus ORDER BY {}",
+         FROM Eucarinogammarus ORDER BY {} {}",
         sort_column
+,
+        direction_str
     );
     
     let mut stmt = conn.prepare(&query)?;
