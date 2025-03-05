@@ -15,6 +15,27 @@ pub fn render(ui: &mut egui::Ui, app: &mut EucarinogammarusApp) {
                 ui.selectable_value(&mut app.sort_column, "Код".to_string(), "Код");
                 ui.selectable_value(&mut app.sort_column, "Род".to_string(), "Род");
                 ui.selectable_value(&mut app.sort_column, "Вид".to_string(), "Вид");
+                ui.selectable_value(&mut app.sort_column, "Размеры_мм".to_string(), "Размеры мм");
+                ui.selectable_value(&mut app.sort_column, "Тело".to_string(), "Тело");
+                ui.selectable_value(&mut app.sort_column, "Окраска".to_string(), "Окраска");
+                ui.selectable_value(&mut app.sort_column, "Распространение".to_string(), "Распространение");
+                ui.selectable_value(&mut app.sort_column, "Глубина_м".to_string(), "Глубина м");
+                ui.selectable_value(&mut app.sort_column, "Вооруж_тела".to_string(), "Вооруж. тела");
+                ui.selectable_value(&mut app.sort_column, "Средний_ряд_I_VII".to_string(), "Средний ряд I-VII");
+                ui.selectable_value(&mut app.sort_column, "Средн_ряд_VIII_X".to_string(), "Средн. ряд VIII-X");
+                ui.selectable_value(&mut app.sort_column, "Сред_ряд_урозом".to_string(), "Сред. ряд урозом");
+                ui.selectable_value(&mut app.sort_column, "Боковой_ряд".to_string(), "Боковой ряд");
+                ui.selectable_value(&mut app.sort_column, "Краевой_ряд".to_string(), "Краевой ряд");
+                ui.selectable_value(&mut app.sort_column, "Особен_воор".to_string(), "Особен. воор.");
+                ui.selectable_value(&mut app.sort_column, "Эпимир_пласт".to_string(), "Эпимир. пласт.");
+                ui.selectable_value(&mut app.sort_column, "Верх_антенны".to_string(), "Верх. антенны");
+                ui.selectable_value(&mut app.sort_column, "Прид_жгутик".to_string(), "Прид. жгутик");
+                ui.selectable_value(&mut app.sort_column, "Нижн_антенны".to_string(), "Нижн. антенны");
+                ui.selectable_value(&mut app.sort_column, "Базип_III_V".to_string(), "Базип. III-V");
+                ui.selectable_value(&mut app.sort_column, "Уроподы_III".to_string(), "Уроподы III");
+                ui.selectable_value(&mut app.sort_column, "Головн_сегм".to_string(), "Головн. сегм.");
+                ui.selectable_value(&mut app.sort_column, "Глаза".to_string(), "Глаза");
+                ui.selectable_value(&mut app.sort_column, "Тельсон".to_string(), "Тельсон");
             });
         
         if ui.button("Применить").clicked() {

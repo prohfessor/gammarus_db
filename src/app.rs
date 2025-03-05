@@ -221,10 +221,32 @@ impl EucarinogammarusApp {
     pub fn filtered_records(&self) -> Vec<&Eucarinogammarus> {
         self.records.iter()
             .filter(|r| {
-                self.search_term.is_empty() || 
-                r.code.to_lowercase().contains(&self.search_term.to_lowercase()) ||
-                r.genus.to_lowercase().contains(&self.search_term.to_lowercase()) ||
-                r.species.to_lowercase().contains(&self.search_term.to_lowercase())
+                let search = self.search_term.to_lowercase();
+                self.search_term.is_empty() ||
+                r.code.to_lowercase().contains(&search) ||
+                r.genus.to_lowercase().contains(&search) ||
+                r.species.to_lowercase().contains(&search) ||
+                r.size_mm.to_lowercase().contains(&search) ||
+                r.body.to_lowercase().contains(&search) ||
+                r.coloration.to_lowercase().contains(&search) ||
+                r.distribution.to_lowercase().contains(&search) ||
+                r.depth_m.to_lowercase().contains(&search) ||
+                r.body_armament.to_lowercase().contains(&search) ||
+                r.median_row_i_vii.to_lowercase().contains(&search) ||
+                r.median_row_viii_x.to_lowercase().contains(&search) ||
+                r.median_row_urozom.to_lowercase().contains(&search) ||
+                r.lateral_row.to_lowercase().contains(&search) ||
+                r.marginal_row.to_lowercase().contains(&search) ||
+                r.special_armament.to_lowercase().contains(&search) ||
+                r.epimeral_plate.to_lowercase().contains(&search) ||
+                r.upper_antennae.to_lowercase().contains(&search) ||
+                r.accessory_flagellum.to_lowercase().contains(&search) ||
+                r.lower_antennae.to_lowercase().contains(&search) ||
+                r.basipodite_iii_v.to_lowercase().contains(&search) ||
+                r.uropods_iii.to_lowercase().contains(&search) ||
+                r.head_segment.to_lowercase().contains(&search) ||
+                r.eyes.to_lowercase().contains(&search) ||
+                r.telson.to_lowercase().contains(&search)
             })
             .collect()
     }
